@@ -31,6 +31,11 @@ function App() {
     });
   };
 
+    // Function to remove an item from the cart
+    const handleRemoveFromCart = (productId) => {
+      setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
+    };
+    
   // Use useEffect to save cart items to local storage whenever cartItems changes
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -50,7 +55,7 @@ function App() {
           />
           
           {/* Here we pass the cartItems state as a prop to CartPage */}
-          <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
+          <Route path="/cart" element={<CartPage cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart}/>} />
         </Routes>
       </div>
     </Router>
