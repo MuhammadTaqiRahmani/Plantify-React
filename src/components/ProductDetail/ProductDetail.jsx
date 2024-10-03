@@ -13,10 +13,11 @@ const ProductDetail = ({ onAddToCart }) => {
     { id: 1, name: 'Lexicon Luxe | Plant', price: 10, image: 'https://theplantpoint.co.uk/cdn/shop/files/aglaonemamria1_800x.jpg?v=1689159941', description: 'Beautiful plant for indoor décor' },
     { id: 2, name: 'Adjective Attire | Plant', price: 12, image: 'https://www.ourhouseplants.com/imgs-content/Aglaonema-Chinese-Evergreen-Maria.jpg', description: 'Evergreen plant with vibrant colors' },
     { id: 3, name: 'ThreadCraft Vibes | Plant', price: 14, image: 'https://www.mountjoyflowers.com/media/images/cache/aa03633ca3feaeed2f8d2b153edcfe0b.330x370.jpg', description: 'Perfect for home or office décor' },
-    { id: 4, name: 'Adjective Attire | Plant', price: 12, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuWML8qVzS8g5m3bjKPfjpm1wAfIjhxg6jSkINVGwziDbT6_nX1NRkbKgMCoQNl8_hKAc&usqp=CAU' },
+    { id: 4, name: 'Botanic Bliss | Plant', price: 12, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuWML8qVzS8g5m3bjKPfjpm1wAfIjhxg6jSkINVGwziDbT6_nX1NRkbKgMCoQNl8_hKAc&usqp=CAU' },
     { id: 5, name: 'Verbal Vogue Tees | Plant', price: 15, image: 'https://image.floranext.com/instances/shop_flowersonbroadstreet_com/catalog/product/f/l/flowersonbroad-83_65ba79f3962ed.jpg.webp?h=700&w=700&r=255&g=255&b=255' },
     { id: 6, name: 'Jargon Jungle | Plant', price: 14, image: 'https://asset.bloomnation.com/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1695431058/vendor/9236/catalog/product/2/0/20210824100542_file_61256d3608218_61256d88b5299._64e0dba07672b.jpg' },
-  ];
+];
+
 
   const product = products.find(p => p.id === parseInt(id));
 
