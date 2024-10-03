@@ -1,7 +1,10 @@
 // Cart.jsx
 import PropTypes from 'prop-types'; // Import PropTypes
 
-const Cart = ({ cartItems, onRemoveFromCart }) => { // Add onRemoveFromCart as a prop
+const Cart = ({ cartItems, onRemoveFromCart }) => {
+  // Calculate total price
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
+
   return (
     <div className="p-4 lg:max-w-5xl max-w-lg mx-auto">
       <h2 className="text-2xl font-bold text-gray-800">Your Cart</h2>
@@ -28,6 +31,16 @@ const Cart = ({ cartItems, onRemoveFromCart }) => { // Add onRemoveFromCart as a
               </button>
             </div>
           ))}
+
+          {/* Display total price */}
+          <div className="mt-4 text-lg font-bold text-gray-800">
+            Total: ${totalPrice.toFixed(2)}
+          </div>
+
+          {/* Checkout button */}
+          <button className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+            Checkout
+          </button>
         </div>
       )}
     </div>
