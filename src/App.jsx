@@ -8,6 +8,7 @@ import Home from './components/Home/Home.jsx';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import CartPage from './components/CartPage/CartPage';
 import Checkout from './components/Checkout/Checkout';
+import About from './components/About/About'; // Import About component
 
 function App() {
   // cartItems state will hold the products added to the cart
@@ -59,6 +60,8 @@ function App() {
             path="/product/:id" 
             element={<ProductDetail onAddToCart={handleAddToCart} />} 
           />
+
+          <Route path="/about" element={<About />} /> {/* Add About route */}
           
           {/* Pass cartItems and handleRemoveFromCart to CartPage */}
           <Route path="/cart" element={<CartPage cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart}/>} />
