@@ -1,13 +1,14 @@
-// import React from 'react';
-import { useParams } from 'react-router-dom';
+// ProductDetail.jsx
+import { useParams,  useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import PropTypes from 'prop-types'; // Import PropTypes
 import './ProductDetail.css';
 
-const ProductDetail = () => {
-  const { id } = useParams(); // Extract product ID from URL
+const ProductDetail = ({ onAddToCart }) => {  
+  const { id } = useParams();
+  const navigate = useNavigate(); // Use navigate hook
 
-  // Your product list (you can also fetch this from an API)
   const products = [
     { id: 1, name: 'Lexicon Luxe | Plant', price: 10, image: 'https://theplantpoint.co.uk/cdn/shop/files/aglaonemamria1_800x.jpg?v=1689159941', description: 'Beautiful plant for indoor décor' },
     { id: 2, name: 'Adjective Attire | Plant', price: 12, image: 'https://www.ourhouseplants.com/imgs-content/Aglaonema-Chinese-Evergreen-Maria.jpg', description: 'Evergreen plant with vibrant colors' },
@@ -17,16 +18,21 @@ const ProductDetail = () => {
     { id: 6, name: 'Jargon Jungle | Plant', price: 14, image: 'https://asset.bloomnation.com/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1695431058/vendor/9236/catalog/product/2/0/20210824100542_file_61256d3608218_61256d88b5299._64e0dba07672b.jpg' },
   ];
 
-  // Find the product based on the ID
   const product = products.find(p => p.id === parseInt(id));
 
   if (!product) {
     return <h2>Product not found</h2>;
   }
 
+  const handleAddToCartAndNavigate = () => {
+    onAddToCart(product); // Add the product to the cart
+    navigate('/cart'); // Navigate to the cart page
+  };
+
   return (
     <>
       <Navbar />
+
       <div className="font-sans">
         <div className="p-4 lg:max-w-5xl max-w-lg mx-auto">
           <div className="grid items-start grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12" id='margins'>
@@ -77,7 +83,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Add to Cart Button */}
-              <button type="button" className="w-full mt-8 px-6 py-3 bg-green-600 hover:border-green-600 hover:bg-[#fff] text-white hover:text-green-600 text-sm font-semibold rounded-md border  border-transparent">
+              <button type="button" className="w-full mt-8 px-6 py-3 bg-green-600 hover:border-green-600 hover:bg-[#fff] text-white hover:text-green-600 text-sm font-semibold rounded-md border  border-transparent" onClick={handleAddToCartAndNavigate}>
                 Add to cart
               </button>
 
@@ -95,6 +101,11 @@ const ProductDetail = () => {
       <Footer />
     </>
   );
+};
+
+// Add PropTypes validation for onAddToCart
+ProductDetail.propTypes = {
+  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default ProductDetail;
