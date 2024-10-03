@@ -1,0 +1,47 @@
+/* Background.css */
+html, body {
+    height: 100%; /* Make sure the html and body cover the full height */
+    margin: 0; /* Remove default margin */
+  }
+.background {
+  background-image: url('./bgpic.jpg'); /* Replace with the actual image path */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.content {
+  text-align: center; /* Center the text */
+  color: white; /* Change text color as needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+  padding: 20px; /* Padding around the text */
+  border-radius: 10px; /* Rounded corners */
+  max-width: 80%; /* Limit the width for better responsiveness */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional shadow for better visibility */
+}
+
+h1{
+    font-size: 60px;
+}
+p{
+    font-size: 20px;
+}
+
+.button1 {
+    border-radius: 15px;
+    border: 2px solid #fff; /* Add border width and color */
+    background-color: transparent; /* Make the background transparent */
+    color: #fff; /* Set text color to white */
+    padding: 10px 20px; /* Add padding for better appearance */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Add a transition for hover effects */
+    margin-top: 15px;
+}
+
+.button1:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Optional: Change background on hover */
+    color: #fff; /* Optional: Change text color on hover */
+}
