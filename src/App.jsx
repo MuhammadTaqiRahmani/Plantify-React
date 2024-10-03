@@ -7,6 +7,7 @@ import Gallery from './components/Gallery/Gallery';
 import Home from './components/Home/Home.jsx';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import CartPage from './components/CartPage/CartPage';
+import Checkout from './components/Checkout/Checkout';
 
 function App() {
   // cartItems state will hold the products added to the cart
@@ -31,11 +32,16 @@ function App() {
     });
   };
 
-    // Function to remove an item from the cart
-    const handleRemoveFromCart = (productId) => {
-      setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
-    };
-    
+  // Function to remove an item from the cart
+  const handleRemoveFromCart = (productId) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
+  };
+
+  // Function to clear the cart (used after placing an order)
+  const handleClearCart = () => {
+    setCartItems([]); // Clear the cart
+  };
+
   // Use useEffect to save cart items to local storage whenever cartItems changes
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -48,14 +54,17 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           
-          {/* Here we pass the onAddToCart function as a prop to ProductDetail */}
+          {/* Pass the handleAddToCart function as a prop to ProductDetail */}
           <Route 
             path="/product/:id" 
             element={<ProductDetail onAddToCart={handleAddToCart} />} 
           />
           
-          {/* Here we pass the cartItems state as a prop to CartPage */}
+          {/* Pass cartItems and handleRemoveFromCart to CartPage */}
           <Route path="/cart" element={<CartPage cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart}/>} />
+          
+          {/* Pass cartItems and handleClearCart to Checkout */}
+          <Route path="/checkout" element={<Checkout cartItems={cartItems} onClearCart={handleClearCart} />} />
         </Routes>
       </div>
     </Router>

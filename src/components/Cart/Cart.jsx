@@ -1,9 +1,11 @@
 // Cart.jsx
 import PropTypes from 'prop-types'; // Import PropTypes
+import { useNavigate } from 'react-router-dom';
 
 const Cart = ({ cartItems, onRemoveFromCart }) => {
   // Calculate total price
   const totalPrice = cartItems.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
+  const navigate = useNavigate();
 
   return (
     <div className="p-4 lg:max-w-5xl max-w-lg mx-auto">
@@ -38,7 +40,7 @@ const Cart = ({ cartItems, onRemoveFromCart }) => {
           </div>
 
           {/* Checkout button */}
-          <button className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+          <button className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700" onClick={() => navigate('/checkout')}>
             Checkout
           </button>
         </div>
